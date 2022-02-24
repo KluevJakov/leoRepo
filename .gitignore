@@ -1,7 +1,2 @@
-/.idea/misc.xml
-/.idea/compiler.xml
-/.idea/dbnavigator.xml
-/.idea/jarRepositories.xml
-/.idea/.gitignore
-/.idea/runConfigurations.xml
+.idea
 /target/classes/com/leojar/
