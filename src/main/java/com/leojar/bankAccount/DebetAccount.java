@@ -1,39 +1,32 @@
 package com.leojar.bankAccount;
 
-import java.util.Scanner;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
+@AllArgsConstructor //волшебство библиотеки lombok | эти 3 строчки заменяют все геттеры/сеттеры и конструктор
 public class DebetAccount implements Account{
 
-    private int balance;
+    private int balance, percent;
 
-    public DebetAccount(int balance) {
-        this.balance = balance;
+    @Override
+    public void deposit(int value) {
+        //внутри класса можно обращаться к полям этого класса напрямую, а не через сеттер
+        balance += value; //добавь в метод проверку на ввод отрицательных значений
     }
 
-    public int getBalance() {
-        return balance;
-    }
-
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
-
-
-    public int deposit(int value) {
-        setBalance(balance + value);
-        return 0;
-    }
-
-    public int withdraw(int value) {
-
+    @Override
+    public void withdraw(int value) {
         if (value <= balance){
             setBalance(balance - value);
         } else {
             System.out.println("Балабол");
         }
-        return 0;
     }
 
+    @Override
     public void show() {
         System.out.println("Сводка по данным на Донецке:");
         System.out.println("Баланс: " + getBalance());
