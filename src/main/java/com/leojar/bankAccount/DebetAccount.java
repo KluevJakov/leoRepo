@@ -2,7 +2,7 @@ package com.leojar.bankAccount;
 
 import java.util.Scanner;
 
-public class DebetAccount {
+public class DebetAccount implements Account{
 
     private int balance;
 
@@ -19,23 +19,19 @@ public class DebetAccount {
     }
 
 
-    public void deposit() {
-        System.out.println("Введите сумму для пополнения счета");
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        setBalance(getBalance() + num);
-
+    public int deposit(int value) {
+        setBalance(balance + value);
+        return 0;
     }
 
-    public void withdraw() {
-        System.out.println("Введите сумму для вывода");
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        if (num <= getBalance()){
-            setBalance(getBalance() - num);
+    public int withdraw(int value) {
+
+        if (value <= balance){
+            setBalance(balance - value);
         } else {
             System.out.println("Балабол");
         }
+        return 0;
     }
 
     public void show() {

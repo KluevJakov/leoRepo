@@ -2,7 +2,7 @@ package com.leojar.bankAccount;
 
 import java.util.Scanner;
 
-public class CreditAccount {
+public class CreditAccount implements Account {
 
     private int balance,percent;
 
@@ -27,26 +27,19 @@ public class CreditAccount {
         this.percent = percent;
     }
 
-    public void deposit() {
-        System.out.println("Введите сумму для пополнения счета");
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        setBalance(getBalance() + num);
-        System.out.println("Введите процентную ставку");
-        int num2 = sc.nextInt();
-        setPercent(num2);
-
+    public int deposit(int value, int value2) {
+        setBalance(getBalance() + value);
+        setPercent(value2);
+        return 0;
     }
 
-    public void withdraw() {
-        System.out.println("Введите сумму для вывода");
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        if (num <= getBalance()){
-            setBalance(getBalance() - num);
+    public int withdraw(int value) {
+        if (value <= getBalance()){
+            setBalance(getBalance() - value);
         } else {
             System.out.println("Балабол");
         }
+        return 0;
     }
 
     public void show() {
