@@ -13,13 +13,17 @@ public class CreditAccount implements Account {
 
     @Override //аннотация говорит, что мы переопределяем метод, который взяли из интерфейса Account
     public void deposit(int value) {
-        //внутри класса можно обращаться к полям этого класса напрямую, а не через сеттер
-        balance += value; //добавь в метод проверку на ввод отрицательных значений
+        while (value < 0) {
+            System.out.println("Смотри че вводишь"); //добавь в метод проверку на ввод отрицательных значений
+        }
+        if (value > 0){
+            balance += value;
+        }
     }
 
     @Override
     public void withdraw(int value) {
-        if (value <= getBalance()){
+        if ((value <= balance) && (value > 0)){
             setBalance(getBalance() - value);
         } else {
             System.out.println("Балабол");
